@@ -1,0 +1,271 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #000;
+    font-family: 'Michroma', 'Courier New', monospace;
+    color: #15f2fd;
+}
+
+canvas {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+}
+
+#loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #15f2fd;
+    font-size: 24px;
+    font-family: 'Michroma', 'Courier New', monospace;
+    text-align: center;
+    z-index: 1000;
+}
+
+#controls {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    color: #15f2fd;
+    font-size: 14px;
+    font-family: 'Michroma', 'Courier New', monospace;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #15f2fd;
+}
+
+#hud {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: #15f2fd;
+    font-family: 'Michroma', 'Courier New', monospace;
+    font-size: 14px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #15f2fd;
+}
+
+#crosshair {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.crosshair-corner {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 1px solid white;
+}
+
+.crosshair-corner.top-left {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+}
+
+.crosshair-corner.top-right {
+    top: 0;
+    right: 0;
+    border-left: none;
+    border-bottom: none;
+}
+
+.crosshair-corner.bottom-left {
+    bottom: 0;
+    left: 0;
+    border-right: none;
+    border-top: none;
+}
+
+.crosshair-corner.bottom-right {
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: none;
+}
+
+.crosshair-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1px;
+    height: 1px;
+    background: white;
+    transform: translate(-50%, -50%);
+}
+
+/* Start Screen Styling */
+#start-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #000011 0%, #001122 50%, #000033 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    font-family: 'Michroma', 'Courier New', monospace;
+}
+
+#title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+#arcade-title {
+    font-size: 1.5em;
+    color: #15f2fd;
+    letter-spacing: 4em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px #15f2fd, 0 0 40px #15f2fd;
+}
+
+#game-title {
+    font-size: 4em;
+    color: #15f2fd;
+    letter-spacing: 0.2em;
+    text-shadow: 0 0 20px #15f2fd, 0 0 40px #15f2fd;
+}
+
+#start-instructions {
+    text-align: center;
+    color: #ffffff;
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+#start-button {
+    padding: 15px 40px;
+    font-size: 1.5em;
+    font-family: 'Michroma', 'Courier New', monospace;
+    background: transparent;
+    color: #15f2fd;
+    border: 2px solid #15f2fd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+}
+
+#start-button:hover {
+    background: #15f2fd;
+    color: #000;
+    box-shadow: 0 0 30px #15f2fd;
+    transform: scale(1.05);
+}
+
+#sound-toggle {
+    background: transparent;
+    border: 1px solid #15f2fd;
+    color: #15f2fd;
+    cursor: pointer;
+    font-size: 1em;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-family: 'Michroma', 'Courier New', monospace;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+#sound-toggle:hover {
+    background: rgba(21, 242, 253, 0.1);
+}
+
+/* Diegetic HUD */
+#diegetic-hud {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 100px;
+    pointer-events: none;
+    z-index: 1001; /* Above crosshair elements if needed */
+}
+
+/* Speed Gauge (Left Wing) */
+.hud-speed-gauge {
+    position: absolute;
+    left: 10px;
+    top: 15px; /* Samma höjd som Heat gauge */
+}
+
+.speed-fill-track {
+    width: 12px;
+    height: 70px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(21, 242, 253, 0.5);
+    transform: skewX(-15deg); /* Spegelvänd mot Heat */
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.speed-fill {
+    width: 100%;
+    height: 33%; /* Tilldelas via JS */
+    background: #15f2fd;
+    box-shadow: 0 0 10px rgba(21, 242, 253, 0.5);
+    transition: height 0.2s ease, background 0.1s;
+}
+
+/* Heat Gauge (Right Wing) */
+.hud-heat-gauge {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+}
+
+.heat-fill-track {
+    width: 12px;
+    height: 70px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 100, 100, 0.5);
+    transform: skewX(15deg);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.heat-fill {
+    width: 100%;
+    height: 0%; /* Dynamically assigned by JS */
+    background: linear-gradient(to top, #00ff00, #ffff00 60%, #ff0000 90%);
+    box-shadow: 0 0 10px rgba(255,100,100, 0.5);
+    transition: height 0.1s linear, background 0.1s;
+}
+
+.heat-fill-track.jammed {
+    border-color: #ff0000;
+    box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+    animation: flash 0.2s infinite;
+}
+
+@keyframes flash {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}

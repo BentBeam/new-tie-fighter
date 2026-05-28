@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIE Fighter 3D - New Project</title>
+    
+    <!-- Google Font Michroma -->
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+    
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="loading">
+        <div>ARCADE TIE FIGHTER</div>
+        <div style="font-size: 16px; margin-top: 10px;">Loading...</div>
+    </div>
+    
+    <div id="controls">
+        <div><strong>FLIGHT CONTROLS</strong></div>
+        <div>Click to lock mouse</div>
+        <div>Move mouse: Steer</div>
+        <div>W/S: Speed up/down</div>
+        <div>Space: Fire lasers</div>
+        <div>ESC: Unlock mouse</div>
+    </div>
+    
+    <div id="hud">
+        <div>Altitude: <span id="altitude">0</span></div>
+        <div>Time: <span id="timer">0:00</span></div>
+        <div>Status: <span id="status">Ready</span></div>
+        <div><span id="targets">Targets: 0/25 destroyed (25 remaining)</span></div>
+    </div>
+    
+    <!-- Start Screen -->
+    <div id="start-screen">
+        <div id="title">
+            <div id="arcade-title">&nbsp;ARCADE</div>
+            <div id="game-title">TIE FIGHTER</div>
+        </div>
+        <div id="start-instructions">
+            <p>Click to lock mouse and start mission</p>
+            <p>W/S: Speed Control | Mouse: Steer | Space: Fire</p>
+        </div>
+        <button id="start-button" style="opacity: 0.5; pointer-events: none;">LADDAR SYSTEM...</button>
+        <button id="sound-toggle" title="Toggle Sound">
+            SOUND: ON
+        </button>
+    </div>
+
+    <div id="container"></div>
+    
+    <!-- Crosshair/Sight and Diegetic HUD -->
+    <div id="crosshair">
+        <div class="crosshair-corner top-left"></div>
+        <div class="crosshair-corner top-right"></div>
+        <div class="crosshair-corner bottom-left"></div>
+        <div class="crosshair-corner bottom-right"></div>
+        <div class="crosshair-dot"></div>
+        
+        <!-- NY DIEGETISK HUD! -->
+        <div id="diegetic-hud">
+             <div class="hud-speed-gauge">
+                 <div class="speed-fill-track">
+                     <div class="speed-fill" id="speed-meter"></div>
+                 </div>
+             </div>
+             <div class="hud-heat-gauge">
+                 <div class="heat-fill-track">
+                     <div class="heat-fill" id="heat-meter"></div>
+                 </div>
+             </div>
+        </div>
+    </div>
+
+    <!-- Import maps polyfill -->
+    <script async src="https://unpkg.com/es-module-shims@1.10.0/dist/es-module-shims.js"></script>
+
+    <!-- Import map -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.174.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.174.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <!-- Game Entry Point -->
+    <script type="module" src="./src/main.js"></script>
+</body>
+</html>

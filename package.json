@@ -1,13 +1,22 @@
 {
   "name": "new-tie-fighter",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.1.0",
+  "description": "A high-fidelity 3D TIE Fighter arcade experience built with Three.js.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-username/new-tie-fighter.git"
+  },
+  "keywords": [
+    "threejs",
+    "starwars",
+    "game",
+    "arcade"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
